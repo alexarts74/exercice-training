@@ -39,11 +39,10 @@ class TreesController < ApplicationController
     @tree = Tree.find(params[:id])
     if current_user == @tree.user
       @tree.destroy
+      redirect_to trees_path, notice: "Tree deleted"
+    else
+      redirect_to tree_path(@tree), notice: "You can't delete this tree"
     end
-    redirect_to trees_path
-  end
-
-  def adopt
   end
 
   private
