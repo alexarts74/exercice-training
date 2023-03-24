@@ -1,0 +1,18 @@
+<h1>Voici tous les arbres</h1>
+
+<% @trees.each do |tree| %>
+  <p><%=  tree.name %></p>
+  <p><%=  tree.address %></p>
+  <p><%=  tree.description %></p>
+  <p><%=  tree.fruit_type %></p>
+  <p><%= tree.price_per_year %></p>
+  <p><%= tree.quantity_per_year %></p>
+  <p><%= link_to "Voir l'arbre", tree_path(tree) %></p>
+  <p><%= link_to "Modifier l'arbre", edit_tree_path(tree) %></p>
+  <%= link_to "Delete", tree_path(tree), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+<% end %>
+
+<br>
+<br>
+
+<p><%= link_to "Ajouter un arbre", new_tree_path %></p>
